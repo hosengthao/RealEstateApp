@@ -5,10 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import net.yorksolutions.realestate.model.Customer;
 import net.yorksolutions.realestate.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,4 +31,27 @@ public class CustomerController {
 
         return objectMapper.writeValueAsString(customerList);
     }
+
+    @PostMapping("/add")
+    String putRealEstate(@RequestBody String body) {
+        try {
+            Customer newCustomer = objectMapper.readValue(body,Customer.class);
+            customerRepository.save(newCustomer);
+        } catch (JsonProcessingException e) {
+            return e.getMessage();
+        }
+
+        return "successfully added customer";
+    }
+
+    @DeleteMapping("/delete")
+    String delCustomer(@RequestParam("id") Long id) {
+        try {
+            customerRepository.deleteById(id);
+        } catch (Exception e){
+            return "error";
+        }
+        return "deleted";
+    }
+
 }

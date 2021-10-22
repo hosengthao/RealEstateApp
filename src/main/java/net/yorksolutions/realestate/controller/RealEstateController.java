@@ -43,4 +43,12 @@ public class RealEstateController {
 
         return "success";
     }
+
+    @GetMapping("/search")
+    String getRealEstateSearchByFname(@RequestParam("fname") String first) throws JsonProcessingException {
+        List<RealEstate> realEstateList = (List<RealEstate>) realEstateRepository.findAll();
+        realEstateList = realEstateList.stream().filter(f -> f.getFname().equals(first)).collect(Collectors.toList());
+
+        return objectMapper.writeValueAsString(realEstateList);
+    }
 }
