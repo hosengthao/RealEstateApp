@@ -53,6 +53,15 @@ public class RealEstate {
     @JsonProperty
     int zip;
 
+    @JsonProperty
+    int price;
+
+    @JsonProperty
+    String phone;
+
+    @JsonProperty
+    String imageurl;
+
     public Long getId() {
         return id;
     }
