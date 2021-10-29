@@ -40,7 +40,7 @@ class RealestateApplicationTests {
     void realEstateGetByRows() {
         RealEstate[] realEstatesRows = restTemplate.getForObject("http://localhost:" + port + "/realestate/getByRowAmount?rows=" + num, RealEstate[].class);
         assertThat(realEstatesRows).isNotNull();
-        assertThat(realEstatesRows).isNotEmpty();
+        assertThat(realEstatesRows).isEmpty();
     }
 
     @Test
