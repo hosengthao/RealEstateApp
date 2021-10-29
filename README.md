@@ -1,0 +1,1 @@
+[![Build Status](http://ec2-18-222-131-194.us-east-2.compute.amazonaws.com:8080/buildStatus/icon?job=realestate-ho-seng%2Fmaster)](http://ec2-18-222-131-194.us-east-2.compute.amazonaws.com:8080/job/realestate-ho-seng/job/master/)
